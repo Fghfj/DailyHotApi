@@ -6,14 +6,20 @@
       "use": "@vercel/node",
       "config": {
         "includeFiles": ["src/**"],
-        "buildCommand": "npm run build"
+        "maxDuration": 10
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/index.ts"
+      "dest": "/src/index.ts"
     }
-  ]
+  ],
+  "functions": {
+    "src/index.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }

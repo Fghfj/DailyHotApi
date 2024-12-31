@@ -5,7 +5,7 @@
       "src": "src/index.ts",
       "use": "@vercel/node",
       "config": {
-        "buildCommand": "pnpm install && node src/index.ts"
+        "buildCommand": "node src/index.ts"
       }
     }
   ],

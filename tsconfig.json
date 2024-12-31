@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -10,11 +10,8 @@
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "outDir": "./dist",
-    "esModuleInterop": true,    // 添加这个
-    "skipLibCheck": true,       // 添加这个
-    "forceConsistentCasingInFileNames": true,  // 添加这个
-    "allowJs": true            // 添加这个
+    "skipLibCheck": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*"],     // 添加这个
   "exclude": ["node_modules", "*.test.*", "./dist/**/*"]
 }

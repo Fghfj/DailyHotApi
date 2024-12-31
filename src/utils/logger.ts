@@ -27,7 +27,41 @@ if (config.USE_LOG_FILE) {
   }
 }
 
-// 其他代码保持不变，直到控制台输出部分
+// 定义不同日志级别的彩色块
+const levelColors: { [key: string]: string } = {
+  error: chalk.bgRed(" ERROR "),
+  warn: chalk.bgYellow(" WARN "),
+  info: chalk.bgBlue(" INFO "),
+  debug: chalk.bgGreen(" DEBUG "),
+  default: chalk.bgWhite(" LOG "),
+};
+
+// 自定义控制台日志输出格式
+const consoleFormat = format.printf(({ level, message, timestamp, stack }) => {
+  // 获取原始日志级别
+  const originalLevel = Object.keys(levelColors).find((lvl) => level.includes(lvl)) || "default";
+  const colorLevel = levelColors[originalLevel] || levelColors.default;
+
+  let logMessage = `${colorLevel} [${timestamp}] ${message}`;
+  if (stack) {
+    logMessage += `\n${stack}`;
+  }
+  return logMessage;
+});
+
+// 创建 logger 实例
+const logger = createLogger({
+  level: "info",
+  format: format.combine(
+    format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    format.errors({ stack: true }),
+    format.splat(),
+    format.json(),
+  ),
+  transports: pathOption,
+});
 
 // 控制台输出
 if (process.env.NODE_ENV !== "production") {

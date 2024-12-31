@@ -2,17 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "node src/index.ts"
-      }
+      "src": "dist/index.js",  // 改用编译后的文件
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/.*",
-      "dest": "src/index.ts"
+      "src": "/(.*)",
+      "dest": "dist/index.js"
     }
   ]
 }

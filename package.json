@@ -1,11 +1,9 @@
+
 {
   "name": "dailyhot-api",
   "version": "2.0.7",
   "description": "An Api on Today's Hot list",
-  "keywords": [
-    "API",
-    "RSS"
-  ],
+  "keywords": ["API", "RSS"],
   "homepage": "https://github.com/imsyy/DailyHotApi#readme",
   "bugs": {
     "url": "https://github.com/imsyy/DailyHotApi/issues"
@@ -33,7 +31,7 @@
     "dev:cache": "cross-env NODE_ENV=development tsx watch src/index.ts",
     "build": "tsc --project tsconfig.json",
     "start": "cross-env NODE_ENV=development tsx dist/index.js",
-    "vercel-build": "tsc --project tsconfig.json"
+    "vercel-build": "tsc && node dist/index.js"
   },
   "type": "module",
   "dependencies": {
